@@ -1,23 +1,28 @@
-import logo from './logo.svg';
+import Stats from "./Components/Stats";
+import Records from "./Components/Records";
 import './App.css';
+import {useState} from "react";
 
 function App() {
+ const [enterText, setEnterText] = useState("");
+ 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div id="top">
+      <Stats text= {enterText}/>
+      </div>
+      <div id="input">
+      <textarea id= "entry" name="" cols="" rows="" placeholder="Enter Text" 
+      value={enterText} 
+      onChange={(e)=>setEnterText(e.target.value)}
+      >
+      </textarea>
+      </div>
+      <div id="bottom">
+      <Stats text= {enterText}/>
+      </div>
+      <Records arr={enterText.split(" ")}></Records>
     </div>
   );
 }
